@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var history = ""
     @State private var msg = ""
     @State private var count = 0
+    @State private var btnDisable = true
     
     var body: some View {
         VStack(alignment:.leading){
@@ -21,21 +22,17 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                     .onReceive(Just(number)) { newValue in
                         var filtered = newValue
-                        if filtered.count > 4 {
-                            filtered = String(filtered.prefix(4))
+                        if filtered.count > correctAnswer.count {
+                            filtered = String(filtered.prefix(correctAnswer.count))
                         }
                         filtered = filtered.filter { "0123456789".contains($0) }
                         if filtered != newValue {
                             number = filtered
                         }
+                        btnDisable = number.count != correctAnswer.count
                     }
                 Button("確定"){
                     var anser = number.compactMap{Int(String($0))}
-                    if anser.count != correctAnswer.count{
-                        msg = "格式錯誤"
-                        number = ""
-                        return
-                    }
                     count += 1
                     var A = 0,B = 0
                     for index in (0...correctAnswer.count-1).reversed(){
@@ -44,18 +41,15 @@ struct ContentView: View {
                             anser.remove(at: index)
                         }
                     }
-                    for num in anser{
-                        if correctAnswer.contains(num){
-                            B+=1
-                        }
-                    }
+                    let common = Set(anser).intersection(Set(correctAnswer))
+                    B = common.count
                     history = history + "\(count). " + number + ":\(A)A\(B)B\n"
                     number = ""
                     msg = ""
                     if A == correctAnswer.count{
                         history = history + "恭喜你！猜對了！"
                     }
-                }
+                }.disabled(btnDisable)
             }
             Text(history)
                 .multilineTextAlignment(.leading)
