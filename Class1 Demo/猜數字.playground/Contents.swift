@@ -41,7 +41,7 @@ class game{
                 guessAns.remove(at: index)
             }
         }
-        let common = Set(anser).intersection(Set(anser))
+        let common = Set(anser).intersection(Set(guessAns))
         let B = common.count
         var response = "\(count). " + number + ":\(A)A\(B)B\n"
         if A == anser.count{
