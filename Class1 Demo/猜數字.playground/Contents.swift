@@ -13,7 +13,7 @@ class game{
         //透過shuffled()將陣列隨機排序，再透過prefix(n)取出前n個數值
         anser = Array(num.shuffled().prefix(4))
         count = 0
-        history = ""
+        history = "歷史紀錄：\n"
     }
     
     func getAnserLength() -> Int{
@@ -21,8 +21,15 @@ class game{
     }
     
     func checkIsLegal(input:String) -> Bool{
+        //檢查是否全部都是數字
         let filtered = input.filter { "0123456789".contains($0) }
-        return input.count == anser.count && filtered == input
+        //檢查是否有重複的數字
+        var set : Set<String.Element> = []
+        for (_,char) in filtered.enumerated(){
+            set.insert(char)
+        }
+        //檢查輸入的字數是否與答案相符
+        return input.count == anser.count && filtered == input && input.count == set.count
     }
     
     func guess(_ number:String){
@@ -49,18 +56,14 @@ class game{
     }
 }
 
-
-
 struct ContentView: View {
     @State private var number = ""
-    @State private var history = ""
-    @State private var msg = ""
     @State private var btnDisable = false
     private var myGame = game()
     
     var body: some View {
         VStack(alignment:.leading){
-            Text("猜數字遊戲：\(msg)")
+            Text("猜數字遊戲：")
             HStack{
                 TextField("請輸入數字", text: $number)
                     .multilineTextAlignment(.center)
@@ -69,12 +72,10 @@ struct ContentView: View {
                     }
                 Button("確定"){
                     myGame.guess(number)
-                    history = myGame.showHistory()
                     number = ""
-                    msg = ""
                 }.disabled(btnDisable)
             }
-            Text(history)
+            Text(myGame.showHistory())
                 .multilineTextAlignment(.leading)
         }
         .frame(width: 300, height: 1000, alignment: .top)
