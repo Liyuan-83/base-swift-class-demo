@@ -16,10 +16,6 @@ class game{
         history = "歷史紀錄：\n"
     }
     
-    func getAnserLength() -> Int{
-        return anser.count
-    }
-    
     func checkIsLegal(input:String) -> Bool{
         //檢查是否全部都是數字
         let filtered = input.filter { "0123456789".contains($0) }
