@@ -8,7 +8,7 @@ class game{
     private var history : String
     
     init() {
-        //宣告一個0~9的數字陣列
+        //宣告一個0~9的數字範圍
         let num = 0...9
         //透過shuffled()將陣列隨機排序，再透過prefix(n)取出前n個數值
         anser = Array(num.shuffled().prefix(4))
