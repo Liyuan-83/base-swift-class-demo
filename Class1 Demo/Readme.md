@@ -1,4 +1,5 @@
 # AB遊戲介紹
+![final](https://github.com/Liyuan-83/swift-class-playground-demo/blob/main/Class1%20Demo/final.png "final")
 #### 遊戲規則
 * 隨機產生一個0~9的四位數字，其中數字不可重複，例：0815
 * 猜測提示：
@@ -148,3 +149,5 @@ struct ContentView: View {
             Text(myGame.showHistory())
                 .multilineTextAlignment(.leading)
 ```
+
+9.完成
