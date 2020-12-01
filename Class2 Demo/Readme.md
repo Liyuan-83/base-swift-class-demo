@@ -2,7 +2,7 @@
 
 #### 圖形一
 ![graph1](./graph1.png "graph1")
-1.設置迴圈
+##### 1.設置迴圈
 ```Swift
 let sideLength = 5
 for _ in 1...sideLength {
@@ -13,7 +13,7 @@ for _ in 1...sideLength {
     print(str)
 }
 ```
-2.設計函式
+##### 2.設計函式
 ```Swift
 func showGraph1Row(str:String) -> String {
     return str + "*"
@@ -22,7 +22,7 @@ func showGraph1Row(str:String) -> String {
 
 #### 圖形二
 ![graph2](./graph2.png "graph2")
-1.設置迴圈
+##### 1.設置迴圈
 ```Swift
 let sideLength = 5
 for col in 1...sideLength {
@@ -33,7 +33,7 @@ for col in 1...sideLength {
     print(str)
 }
 ```
-2.設計函式
+##### 2.設計函式
 ```Swift
 func showGraph2Row(str:String, length:Int, col:Int, row:Int) -> String {
     if col == 1 || col == length || row == 1 || row == length{
@@ -45,7 +45,7 @@ func showGraph2Row(str:String, length:Int, col:Int, row:Int) -> String {
 
 #### 圖形三
 ![graph3](./graph3.png "graph3")
-1.設置迴圈
+##### 1.設置迴圈
 ```Swift
 let sideLength = 7
 for col in 1...sideLength {
@@ -56,7 +56,7 @@ for col in 1...sideLength {
     print(str)
 }
 ```
-2.設計函式
+##### 2.設計函式
 ```Swift
 func showGraph3Row(str:String, col:Int, row:Int) -> String {
     if col % 2 == 1 || row % 2 == 1{
@@ -67,7 +67,7 @@ func showGraph3Row(str:String, col:Int, row:Int) -> String {
 ```
 #### 圖形四
 ![graph4](./graph4.png "graph4")
-1.設置迴圈
+##### 1.設置迴圈
 ```Swift
 let sideLength = 7
 for col in 1...sideLength {
@@ -78,7 +78,7 @@ for col in 1...sideLength {
     print(str)
 }
 ```
-2.設計函式
+##### 2.設計函式
 ```Swift
 func showGraph4Row(str:String, length:Int, col:Int, row:Int) -> String {
     if col == 1 || col == length || row == 1 || row == length{
