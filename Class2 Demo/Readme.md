@@ -94,5 +94,5 @@ func showGraph4Row(str:String, length:Int, col:Int, row:Int) -> String {
 ```
 
 #### 補充
-可以透過「 Sitch...Case... 」與「 Random 」 隨機顯示出圖形
+可以透過「 Switch...Case... 」與「 Random 」 隨機顯示出圖形
 ![swich_case](./swich_case.png "swich_case")
